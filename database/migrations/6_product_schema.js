@@ -17,7 +17,7 @@ class ProductSchema extends Schema {
         .index("company_id");
       table
         .foreign("company_id")
-        .references("companies.id")
+        .references("companies.company_id")
         .onDelete("cascade");
       table
         .integer("category_id")

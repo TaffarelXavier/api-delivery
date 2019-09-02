@@ -5,11 +5,12 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Category = use("App/Models/Categories");
+const Database = use("Database");
 
 /**
  * Resourceful controller for interacting with categorias
  */
-class CategoryController {
+class CategoriesController {
   /**
    * Show a list of all categorias.
    * GET categorias
@@ -23,6 +24,35 @@ class CategoryController {
     const category = await  Category.find(1);
     const userProfile = await category.products().where('company_id', 1).fetch();
     return userProfile;
+  }
+
+ /**
+   * 
+   * @param {*} param0 
+   * @param {*} response 
+   */
+  async getCategoriesByCompanyId({ params, response }) {
+
+    try {
+      const { id } = params;  //O Id da empresa
+
+      const categories = await Database.select(
+        "categories.category_name","categories.category_id",
+        Database.raw(
+          "SUM(IF(categories.category_id IS NULL, 0, 1)) AS amount_products"
+        )
+      )
+        .from("categories")
+        .leftJoin("products", "categories.category_id", "products.category_id")
+        .leftJoin("companies", "products.company_id", "companies.company_id")
+        .whereRaw("companies.company_id = ?", [id])
+        .orWhere("companies.company_url", '=', id)
+        .groupBy("categories.category_id");
+      return categories;
+    } catch (error) {
+      return response.json(error);
+    }
+   
   }
 
   /**
@@ -95,4 +125,4 @@ class CategoryController {
   }
 }
 
-module.exports = CategoryController
+module.exports = CategoriesController

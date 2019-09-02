@@ -20,7 +20,6 @@ class ProdutoController {
    * @param {View} ctx.view
    */
   async index({ params, request, response, view }) {
-    console.log(params);
     return [1, 2, 3];
   }
 
@@ -64,8 +63,6 @@ class ProdutoController {
   async getProdutosByEmpresaId({ params, response }) {
     try {
       const { id } = params;
-
-      console.log(id);
 
       const produtos = await Products.query()
         .where({ company_id: id })

@@ -1,10 +1,20 @@
-'use strict'
+"use strict";
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model')
+const Model = use("Model");
 
 class Companies extends Model {
+  
+  static get primaryKey () {
+    return 'company_id'
+  }
+  
+  categories() {
+    return this.hasMany('App/Models/Products')
+    .innerJoin('categories', 'products.category_id', 'categories.category_id');
+  }
+  
 
 }
 
-module.exports = Companies
+module.exports = Companies;

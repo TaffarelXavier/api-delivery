@@ -28,6 +28,8 @@ Route.get('/', () => {
 
 Route.resource('companies', 'CompaniesController').apiOnly();
 
+Route.get('categories/company/:id', 'CategoriesController.getCategoriesByCompanyId');
+
 Route.resource('products', 'ProductsController').apiOnly();
 
 Route.resource('categories', 'CategoriesController').apiOnly();

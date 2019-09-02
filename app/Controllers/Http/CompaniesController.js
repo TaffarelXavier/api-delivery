@@ -5,7 +5,6 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Companies = use("App/Models/Companies");
-
 /**
  * Resourceful controller for interacting with empresas
  */
@@ -65,9 +64,10 @@ class EmpresaController {
   async show({ params, request, response, view }) {
     try {
       if (params.id) {
-        const empresa = await Companies
-        .query().where('company_url', params.id)
-        .orWhere('company_id', params.id).fetch();
+        const empresa = await Companies.query()
+          .where("company_url", params.id)
+          .orWhere("company_id", params.id)
+          .fetch();
         if (empresa.rows.length > 0) {
           return empresa;
         } else {
@@ -138,7 +138,7 @@ class EmpresaController {
           await empresa.delete();
 
           return empresa;
-        }else{
+        } else {
           return response.send({ erro: true, msg: "REGISTRO_NAO_ENCONTRADO" });
         }
       }
