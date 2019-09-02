@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class Products extends Model {
+    static get primaryKey () {
+        return 'product_id'
+      }
 }
 
 module.exports = Products

@@ -6,7 +6,7 @@ const Schema = use('Schema')
 class CategorySchema extends Schema {
   up () {
     this.create('categories', (table) => {
-      table.increments()
+      table.increments("category_id")
       table.string("category_name", 254).notNullable().unique()
       table.timestamps()
     })

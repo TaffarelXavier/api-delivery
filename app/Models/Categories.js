@@ -7,6 +7,9 @@ class Categories extends Model {
   products() {
     return this.hasMany('App/Models/Products');
   }
+  static get primaryKey () {
+    return 'category_id'
+  }
 }
 
 module.exports = Categories;
