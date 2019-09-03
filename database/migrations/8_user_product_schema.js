@@ -16,7 +16,7 @@ class UserProductSchema extends Schema {
         .index("user_id");
       table
         .foreign("user_id")
-        .references("users.id")
+        .references("users.user_id")
         .onDelete("cascade");
       table
         .integer("product_id")
@@ -25,7 +25,7 @@ class UserProductSchema extends Schema {
         .index("product_id");
       table
         .foreign("product_id")
-        .references("products.id")
+        .references("products.product_id")
         .onDelete("cascade");
       table.timestamps();
     });

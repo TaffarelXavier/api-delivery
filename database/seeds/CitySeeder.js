@@ -15,7 +15,9 @@ const Factory = use("Factory");
 
 class CategorySeeder {
   async run() {
-    const plan = await Factory.model("App/Models/Categories").createMany(10);
+    
+    //Popula a tabela Categoria
+    const Users = await Factory.model("App/Models/City").createMany(10);
   }
 }
 

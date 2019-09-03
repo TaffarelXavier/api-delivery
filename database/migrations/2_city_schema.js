@@ -15,7 +15,7 @@ class CitySchema extends Schema {
         .index("uf_id");
       table
         .foreign("uf_id")
-        .references("ufs.id")
+        .references("ufs.uf_id")
         .onDelete("cascade");
       table.timestamps();
     });

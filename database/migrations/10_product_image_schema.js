@@ -12,15 +12,15 @@ class ProductImageSchema extends Schema {
       table.string("prod_img_name");
       table.string("prod_img_type");
       table.string("prod_img_subtype");
-      table
+      /*table
         .integer("product_id")
         .notNullable()
         .unsigned()
         .index("product_id");
       table
         .foreign("product_id")
-        .references("products.id")
-        .onDelete("cascade");
+        .references("products.product_id")
+        .onDelete("cascade");*/
       table.timestamps();
     });
   }

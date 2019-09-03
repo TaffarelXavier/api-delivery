@@ -1,8 +1,8 @@
-"use strict";
+'use strict'
 
 /*
 |--------------------------------------------------------------------------
-| CategorySeeder
+| UfSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -11,12 +11,13 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
-const Factory = use("Factory");
+const Factory = use('Factory')
 
-class CategorySeeder {
-  async run() {
-    const plan = await Factory.model("App/Models/Categories").createMany(10);
+class UfSeeder {
+  async run () {
+        //Popula a tabela Categoria
+        const Uf = await Factory.model("App/Models/Uf").createMany(10);
   }
 }
 
-module.exports = CategorySeeder;
+module.exports = UfSeeder

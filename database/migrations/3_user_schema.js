@@ -6,7 +6,7 @@ const Schema = use("Schema");
 class UserSchema extends Schema {
   up() {
     this.create("users", table => {
-      table.increments();
+      table.increments("user_id");
       table.string("user_name", 80).notNullable();
       table.string("user_email", 254).notNullable().unique();
       table.string("user_password", 60).notNullable();
@@ -21,7 +21,7 @@ class UserSchema extends Schema {
         .index("city_id");
       table
         .foreign("city_id")
-        .references("cities.id")
+        .references("cities.city_id")
         .onDelete("cascade");
       table.timestamps();
     });

@@ -26,7 +26,7 @@ class ProductSchema extends Schema {
         .index("category_id");
       table
         .foreign("category_id")
-        .references("categories.id")
+        .references("categories.category_id")
         .onDelete("cascade");
       table.timestamps();
     });

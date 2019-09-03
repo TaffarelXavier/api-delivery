@@ -23,7 +23,7 @@ class CompanySchema extends Schema {
         .index("user_id");
       table
         .foreign("user_id")
-        .references("users.id")
+        .references("users.user_id")
         .onDelete("cascade");
       table.timestamps()
     })

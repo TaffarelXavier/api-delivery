@@ -17,7 +17,7 @@ class StockSchema extends Schema {
         .index("product_id");
       table
         .foreign("product_id")
-        .references("products.id")
+        .references("products.product_id")
         .onDelete("cascade");
       table.timestamps();
     });
