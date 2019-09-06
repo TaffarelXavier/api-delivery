@@ -55,11 +55,30 @@ class ProdutoController {
    */
   async show({ params, request, response, view }) {}
 
-  /**
-   *
-   * @param {object} params
-   * @param {Response} response
+ /**
+   * @swagger
+   * /products/companie/:id:
+   *   get:
+   *     tags:
+   *       - Delivery
+   *     summary: Busca os produtos de uma empresa específica
+   *     parameters:
+   *       - request: id
+   *         responsive: O Id da Empresa
+   *         view: query
+   *         required: false
+   *         type: string
+   *     responses:
+   *       200:
+   *         description: Send hello message
+   *         example:
+   *           message: Hello Guess
+   *       400:
+   *         description: The specified user ID is invalid (e.g. not a number).
+   *       404:
+   *         description: A user with the specified ID was not found.
    */
+
   async getProdutosByEmpresaId({ params, response }) {
     try {
       const { id } = params;

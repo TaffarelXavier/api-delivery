@@ -10,7 +10,7 @@ const Database = use('Database');
 class CategoriesController {
   /**
    * @swagger
-   * /categiries:
+   * /categories:
    *   get:
    *     tags:
    *       - Delivery
@@ -43,7 +43,7 @@ class CategoriesController {
 
   /**
    * @swagger
-   * /categories:
+   * /categories/company/:id:
    *   get:
    *     tags:
    *       - Delivery
