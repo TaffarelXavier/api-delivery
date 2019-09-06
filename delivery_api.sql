@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
@@ -22,7 +22,9 @@ use delivery_api;
 --
 -- Database: `delivery_api`
 --
-
+drop database `delivery_api`;
+create database `delivery_api`;
+use `delivery_api`;
 -- --------------------------------------------------------
 
 --

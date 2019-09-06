@@ -3,6 +3,25 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use("Model");
 
+/** 
+*  @swagger
+*  definitions:
+*    City:
+*      type: object
+*      properties:
+*        city_id:
+*          type: uint
+*        username:
+*          type: string
+*        email:
+*          type: string
+*        password:
+*          type: string
+*      required:
+*        - username
+*        - email
+*        - password
+*/
 class City extends Model {
   static get primaryKey() {
     return "city_id";
