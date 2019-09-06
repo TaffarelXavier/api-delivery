@@ -1,23 +1,27 @@
-"use strict";
+'use strict';
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Companies = use("App/Models/Companies");
+const Companies = use('App/Models/Companies');
 /**
  * Resourceful controller for interacting with empresas
  */
 
 class EmpresaController {
   /**
-   * Show a list of all empresas.
-   * GET empresas
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * @swagger
+   * /companies:
+   *   get:
+   *     tags:
+   *       - Company
+   *     summary: Return all companies.
+   *     responses:
+   *       200:
+   *         description: Return all list of companies
+   *         example:
+   *           message: An Array
    */
   async index({ request, response, view }) {
     const empresa = Companies.all();
@@ -25,24 +29,34 @@ class EmpresaController {
   }
 
   /**
-   * Create/save a new empresa.
-   * POST empresas
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * @swagger
+   * /companies:
+   *   post:
+   *     tags:
+   *       - Company
+   *     summary: Create/save a new empresa.
+   *     description:  Create/save a new empresa, etc.
+   *     parameters:
+   *     - in: query
+   *       name: offset
+   *       schema:
+   *         type: integer
+   *       description: The number of items to skip before starting to collect the result set
+   *     - in: query
+   *       name: limit
+   *       schema:
+   *         type: integer
+   *       description: The numbers of items to return
+   *     responses:
+   *       200:
+   *         description: Return all list of companies
+   *         example:
+   *           message: An Array
    */
+
   async store({ request, response }) {
     try {
-      const data = request.only([
-        "nome_fantasia",
-        "url",
-        "codigo_uf",
-        "codigo_cidade",
-        "nome_rua",
-        "bairro",
-        "numero"
-      ]);
+      const data = request.only(['nome_fantasia', 'url', 'codigo_uf', 'codigo_cidade', 'nome_rua', 'bairro', 'numero']);
 
       const empresa = await Companies.create(data);
 
@@ -51,27 +65,30 @@ class EmpresaController {
       return response.send({ error: error });
     }
   }
-
-  /**
-   * Display a single empresa.
-   * GET empresas/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+    /**
+   * @swagger
+   * /companies/:id:
+   *   get:
+   *     tags:
+   *       - Company
+   *     summary: Return a company by your id.
+   *     responses:
+   *       200:
+   *         description: Return all list of companies
+   *         example:
+   *           message: An Array
    */
   async show({ params, request, response, view }) {
     try {
       if (params.id) {
         const empresa = await Companies.query()
-          .where("company_url", params.id)
-          .orWhere("company_id", params.id)
+          .where('company_url', params.id)
+          .orWhere('company_id', params.id)
           .fetch();
         if (empresa.rows.length > 0) {
           return empresa;
         } else {
-          return response.send({ erro: true, msg: "REGISTRO_NAO_ENCONTRADO" });
+          return response.send({ erro: true, msg: 'REGISTRO_NAO_ENCONTRADO' });
         }
       }
     } catch (error) {
@@ -96,13 +113,13 @@ class EmpresaController {
 
         if (empresa !== null) {
           const data = request.only([
-            "nome_fantasia",
-            "url",
-            "codigo_uf",
-            "codigo_cidade",
-            "nome_rua",
-            "bairro",
-            "numero"
+            'nome_fantasia',
+            'url',
+            'codigo_uf',
+            'codigo_cidade',
+            'nome_rua',
+            'bairro',
+            'numero',
           ]);
 
           empresa.merge(data);
@@ -111,10 +128,10 @@ class EmpresaController {
 
           return empresa;
         } else {
-          return response.send({ erro: true, msg: "REGISTRO_NAO_ENCONTRADO" });
+          return response.send({ erro: true, msg: 'REGISTRO_NAO_ENCONTRADO' });
         }
       } else {
-        return response.send({ erro: true, msg: "ID_NAO_ESPECIFICADO" });
+        return response.send({ erro: true, msg: 'ID_NAO_ESPECIFICADO' });
       }
     } catch (error) {
       console.log(error);
@@ -139,7 +156,7 @@ class EmpresaController {
 
           return empresa;
         } else {
-          return response.send({ erro: true, msg: "REGISTRO_NAO_ENCONTRADO" });
+          return response.send({ erro: true, msg: 'REGISTRO_NAO_ENCONTRADO' });
         }
       }
     } catch (error) {

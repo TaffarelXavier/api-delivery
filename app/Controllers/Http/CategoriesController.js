@@ -13,7 +13,7 @@ class CategoriesController {
    * /categories:
    *   get:
    *     tags:
-   *       - Delivery
+   *       - Category
    *     summary: Resourceful controller for interacting with categorias
    *     parameters:
    *       - request: name

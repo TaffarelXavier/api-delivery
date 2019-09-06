@@ -61,7 +61,7 @@ class ProdutoController {
    *   get:
    *     tags:
    *       - Delivery
-   *     summary: Busca os produtos de uma empresa específica
+   *     summary: Busca os produtos de uma empresa específica pelo id da empresa.
    *     parameters:
    *       - request: id
    *         responsive: O Id da Empresa
