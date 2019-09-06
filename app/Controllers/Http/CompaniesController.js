@@ -5,19 +5,20 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 const Companies = use("App/Models/Companies");
-/**
- * Resourceful controller for interacting with empresas
- */
 
 class EmpresaController {
   /**
-   * Show a list of all empresas.
-   * GET empresas
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * @swagger
+   * /companies:
+   *   get:
+   *     tags:
+   *       - Company
+   *     summary: Retorna todas as empresas.
+   *     responses:
+   *       200:
+   *         description: Retorna um objeto com todas as empresas
+   *         example:
+   *           message: An Array
    */
   async index({ request, response, view }) {
     const empresa = Companies.all();
@@ -25,13 +26,31 @@ class EmpresaController {
   }
 
   /**
-   * Create/save a new empresa.
-   * POST empresas
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
+   * @swagger
+   * /companies:
+   *   post:
+   *     tags:
+   *       - Company
+   *     summary: Cria uma nova empresa.
+   *     description: Cria uma nova empresa.
+   *     parameters:
+   *     - in: query
+   *       name: offset
+   *       schema:
+   *         type: integer
+   *       description: The number of items to skip before starting to collect the result set
+   *     - in: query
+   *       name: limit
+   *       schema:
+   *         type: integer
+   *       description: The numbers of items to return
+   *     responses:
+   *       200:
+   *         description: Return all list of companies
+   *         example:
+   *           message: An Array
    */
+
   async store({ request, response }) {
     try {
       const data = request.only([
@@ -51,15 +70,18 @@ class EmpresaController {
       return response.send({ error: error });
     }
   }
-
   /**
-   * Display a single empresa.
-   * GET empresas/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
+   * @swagger
+   * /companies/:id:
+   *   get:
+   *     tags:
+   *       - Company
+   *     summary: Return a company by your id.
+   *     responses:
+   *       200:
+   *         description: Return all list of companies
+   *         example:
+   *           message: An Array
    */
   async show({ params, request, response, view }) {
     try {

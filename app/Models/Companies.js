@@ -2,7 +2,15 @@
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use("Model");
-
+/** 
+*  @swagger
+*  definitions:
+*    Company:
+*      type: object
+*      properties:
+*        company_id:
+*          type: uint
+*/
 class Companies extends Model {
   
   static get primaryKey () {

@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `delivery_api`
 --
-
+drop database `delivery_api`;
+create database `delivery_api`;
+use `delivery_api`;
 -- --------------------------------------------------------
 
 --
