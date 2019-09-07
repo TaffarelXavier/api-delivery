@@ -84,6 +84,7 @@ class EmpresaController {
    *        name: "company_id"
    *        schema:
    *          type: integer
+   *     required: true
    *     responses:
    *       200:
    *         description: Retorna uma empresa específica pelo seu Id ou url.

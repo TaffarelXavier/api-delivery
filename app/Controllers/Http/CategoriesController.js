@@ -22,6 +22,7 @@ class CategoriesController {
    *        name: "idEmpresa"
    *        schema:
    *          type: integer
+   *        required: true
    *        description: Pode ser o id (company_id) ou url relacionada à empresa (company_url)
    *     responses:
    *       200:
