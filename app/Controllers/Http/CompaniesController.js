@@ -72,16 +72,39 @@ class EmpresaController {
   }
   /**
    * @swagger
-   * /companies/:id:
+   * /companies/{company_id}:
    *   get:
    *     tags:
    *       - Company
-   *     summary: Return a company by your id.
+   *     summary: Retorna uma empresa (company_id ou company_url)
+   *     description: Retorna uma empresa pelo company_id ou company_url
+   *     operationId: "idEmpresa"
+   *     parameters:
+   *      - in: path
+   *        name: "company_id"
+   *        schema:
+   *          type: integer
    *     responses:
    *       200:
-   *         description: Return all list of companies
+   *         description: Retorna uma empresa específica pelo seu Id ou url.
    *         example:
-   *           message: An Array
+   *           0: [
+  {
+    "company_id": 1,
+    "company_fantasy_name": "JOCTI",
+    "company_cnpj": "MIADK",
+    "company_phone": "HONDE",
+    "company_street": "JENET",
+    "company_number": "HUKIW",
+    "company_district": "ZADRO",
+    "company_logo": "//www.gravatar.com/avatar/70c1d9d0e1f23c7d655ad1c1c72959cd.jpg",
+    "company_description": "Acser midwu pulele makci idfutvi gawhu hocwove uz pizsajij neddintoc wu bodsa hozah daj.",
+    "company_url": "julfu",
+    "user_id": 1,
+    "created_at": "2019-09-02 22:03:42",
+    "updated_at": "2019-09-02 22:03:42"
+  }
+]
    */
   async show({ params, request, response, view }) {
     try {

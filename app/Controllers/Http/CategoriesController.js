@@ -4,63 +4,32 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-const Category = use("App/Models/Categories");
 const Database = use("Database");
 
 class CategoriesController {
-  /**
-   * @swagger
-   * /categories:
-   *   get:
-   *     tags:
-   *       - Category
-   *     summary: Resourceful controller for interacting with categorias
-   *     description: Cria uma nova empresa.
-   *     parameters:
-   *       - request: name
-   *         responsive: Name of the user
-   *         view: query
-   *         required: false
-   *         type: string
-   *     responses:
-   *       200:
-   *         description: Send hello message
-   *         example:
-   *           message: Hello Guess
-   *       400:
-   *         description: The specified user ID is invalid (e.g. not a number).
-   *       404:
-   *         description: A user with the specified ID was not found.
-   */
-
-  async index({ request, response, view }) {
-    const category = await Category.find(1);
-    const userProfile = await category
-      .products()
-      .where("company_id", 1)
-      .fetch();
-    return userProfile;
-  }
 
   /**
    * @swagger
-   * /categories/company/:id:
+   * /categories/company/{idEmpresa}:
    *   get:
    *     tags:
    *       - Category
    *     summary: Busca as categorias de uma empresa
-   *     description: Busca as categorias de uma empresa
+   *     description: Busca as categorias de uma empresa com a quantidade de produtos dessa `categoria`.
+   *     operationId: "idEmpresa"
    *     parameters:
-   *       - request: id
-   *         responsive: O id da empresa ou pode ser uma url válida que reprenseta aquela empresa.
-   *         view: query
-   *         required: false
-   *         type: string
+   *      - in: path
+   *        name: "idEmpresa"
+   *        schema:
+   *          type: integer
+   *        description: Pode ser o id (company_id) ou url relacionada à empresa (company_url)
    *     responses:
    *       200:
-   *         description: Retorna as categorias como um json.
+   *         description: Retorna os nomes das categorias, `seguido` pela quantidade de produtos em cada categoria.
    *         example:
-   *           message: Hello Guess
+   *           0: {"category_name": "FRUTAS","category_id": 1,"amount_products": 15}
+   *           1: {"category_name": "LEGUMES","category_id": 2,"amount_products": 20}
+   *           2: {"category_name": "VERDURAS","category_id": 3,"amount_products": 35}
    */
   async getCategoriesByCompanyId({ params, response }) {
     try {
@@ -85,68 +54,6 @@ class CategoriesController {
     }
   }
 
-  /**
-   * Render a form to be used for creating a new categoria.
-   * GET categorias/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create({ request, response, view }) {}
-
-  /**
-   * Create/save a new categoria.
-   * POST categorias
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async store({ request, response }) {}
-
-  /**
-   * Display a single categoria.
-   * GET categorias/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show({ params, request, response, view }) {}
-
-  /**
-   * Render a form to update an existing categoria.
-   * GET categorias/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {}
-
-  /**
-   * Update categoria details.
-   * PUT or PATCH categorias/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update({ params, request, response }) {}
-
-  /**
-   * Delete a categoria with id.
-   * DELETE categorias/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async destroy({ params, request, response }) {}
 }
 
 module.exports = CategoriesController;

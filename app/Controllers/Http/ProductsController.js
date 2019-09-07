@@ -45,38 +45,33 @@ class ProdutoController {
   async store({ request, response }) {}
 
   /**
-   * Display a single produto.
-   * GET produtos/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show({ params, request, response, view }) {}
-
- /**
    * @swagger
-   * /products/companie/:id:
+   * /products/company/{company_id}:
    *   get:
-   *     tags:
-   *       - Delivery
-   *     summary: Busca os produtos de uma empresa específica pelo id da empresa.
-   *     parameters:
-   *       - request: id
-   *         responsive: O Id da Empresa
-   *         view: query
-   *         required: false
-   *         type: string
-   *     responses:
-   *       200:
-   *         description: Send hello message
-   *         example:
-   *           message: Hello Guess
-   *       400:
-   *         description: The specified user ID is invalid (e.g. not a number).
-   *       404:
-   *         description: A user with the specified ID was not found.
+   *       tags:
+   *       - "Products"
+   *       summary: "Busca produtos id de uma empresa"
+   *       description: "Returns a single pet"
+   *       operationId: "getPetById"
+   *       produces:
+   *       - "application/xml"
+   *       - "application/json"
+   *       parameters:
+   *       - name: "company_id"
+   *         in: "path"
+   *         description: "ID da empresa"
+   *         required: true
+   *         type: "integer"
+   *         format: "int64"
+   *       responses:
+   *         200:
+   *           description: "successful operation"
+   *           schema:
+   *             $ref: "#/definitions/Pet"
+   *         400:
+   *           description: "Invalid ID supplied"
+   *         404:
+   *           description: "Pet not found"
    */
 
   async getProdutosByEmpresaId({ params, response }) {
@@ -95,37 +90,6 @@ class ProdutoController {
       return error;
     }
   }
-
-  /**
-   * Render a form to update an existing produto.
-   * GET produtos/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit({ params, request, response, view }) {}
-
-  /**
-   * Update produto details.
-   * PUT or PATCH produtos/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update({ params, request, response }) {}
-
-  /**
-   * Delete a produto with id.
-   * DELETE produtos/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async destroy({ params, request, response }) {}
 }
 
 module.exports = ProdutoController;

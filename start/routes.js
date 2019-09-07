@@ -34,4 +34,4 @@ Route.resource('products', 'ProductsController').apiOnly();
 
 Route.resource('categories', 'CategoriesController').apiOnly();
 
-Route.get('products/companie/:id', 'ProductsController.getProdutosByEmpresaId');
+Route.get('products/company/:id', 'ProductsController.getProdutosByEmpresaId');

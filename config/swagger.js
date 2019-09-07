@@ -16,11 +16,12 @@ module.exports = {
     swaggerDefinition: {
       info: {
         title: 'Delivery Api Documentação REST',
-        description: 'Documentação Oficial da API - Delivery, etc.',
+        description: 'Documentação `Oficial da API - Delivery`, etc.',
         version: '1.0.0',
       },
       basePath: '/',
       host:"api.rsvtelecom.com.br",
+      schemes:["http","https"],
       // Example security definitions.
       securityDefinitions: {
         ApiKey: {
