@@ -76,8 +76,8 @@ class EmpresaController {
    *   get:
    *     tags:
    *       - Company
-   *     summary: Retorna uma empresa (company_id ou company_url)
-   *     description: Retorna uma empresa pelo company_id ou company_url
+   *     summary: Retorna uma única empresa (company_id ou company_url)
+   *     description: Retorna uma única empresa pelo company_id ou company_url
    *     operationId: "idEmpresa"
    *     parameters:
    *      - in: path
