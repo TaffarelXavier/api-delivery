@@ -26,7 +26,7 @@ class EmpresaController {
   }
 
   /**
-   * @swagger
+   * 
    * /companies:
    *   post:
    *     tags:
