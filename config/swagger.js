@@ -21,7 +21,7 @@ module.exports = {
       },
       basePath: '/',
       host:"api.rsvtelecom.com.br",
-      schemes:["http","https"],
+      schemes:["https","http"],
       // Example security definitions.
       securityDefinitions: {
         ApiKey: {
