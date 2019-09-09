@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +16,20 @@
 |     Also you can preload files by calling `preLoad('path/to/file')` method.
 |     Make sure to pass a relative path from the project root.
 */
+const cluster = require("cluster");
 
-const { Ignitor } = require('@adonisjs/ignitor')
+if (cluster.isMaster) {
+  for (let i = 0; i < 4; i++) {
+    cluster.fork();
+  }
+  require("@adonisjs/websocket/clusterPubSub")();
+  return;
+}
 
-new Ignitor(require('@adonisjs/fold'))
+const { Ignitor } = require("@adonisjs/ignitor");
+
+new Ignitor(require("@adonisjs/fold"))
   .appRoot(__dirname)
+  .wsServer() // boot the WebSocket server
   .fireHttpServer()
-  .catch(console.error)
+  .catch(console.error);

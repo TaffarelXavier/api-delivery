@@ -50,8 +50,8 @@ class ProdutoController {
    *   get:
    *       tags:
    *       - "Products"
-   *       summary: "Busca produtos id de uma empresa"
-   *       description: "Returns a single pet"
+   *       summary: "Busca produtos de uma empresa pelo id, exclusivamente, dela."
+   *       description: "Busca produtos de uma empresa pelo id, exclusivamente, dela."
    *       operationId: "getPetById"
    *       produces:
    *       - "application/xml"

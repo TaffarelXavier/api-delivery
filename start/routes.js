@@ -35,3 +35,7 @@ Route.resource('products', 'ProductsController').apiOnly();
 Route.resource('categories', 'CategoriesController').apiOnly();
 
 Route.get('products/company/:id', 'ProductsController.getProdutosByEmpresaId');
+
+Route.get('/chat', ({view, response }) => {
+  return view.render('chat')
+})
